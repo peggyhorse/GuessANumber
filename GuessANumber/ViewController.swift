@@ -10,16 +10,41 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBOutlet weak var aGuessedNumber: UITextField!
+    
+    @IBOutlet weak var answer: UILabel!
+    
+    var clickButoonTimes = 0
+    let correctNumber = 25
+
+    @IBAction func guessButoon(sender: UIButton) {
+        
+        
+        if let agn = aGuessedNumber.text {
+            
+            if let doubleAgt = Int(agn) {
+                
+                if doubleAgt == correctNumber && clickButoonTimes <= 5
+
+                {
+                    answer.text = "you are right"
+                    
+                }else if clickButoonTimes <= 5{
+                    answer.text = "you are wrong"
+                    clickButoonTimes += 1
+                }else {
+                    answer.text = "over 5 times"
+                    sender.enabled = false
+                }
+                
+            }else {
+                
+                answer.text = "fail"
+            }
+            
+            
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
+    
 }
 
